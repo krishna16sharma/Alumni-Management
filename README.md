@@ -5,6 +5,7 @@ programming to make simple applications. The project uses CSV(Comma seprated val
 
 ## Users of the program
 This program can be used by admin, students and alumni.
+
 The admin can:
 * Update Events
 * Create new records (students and alumni)
