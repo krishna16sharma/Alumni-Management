@@ -4,9 +4,11 @@ import java.time.Year;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+
 public class Main {
         static int n;//No of Students
-        public static void main(String[] args) { Boolean cho=false;
+        public static void main(String[] args) { 
+        Boolean cho=false;
         Boolean student=false;
         Boolean Alumni=false;
         Boolean Adm=false;
@@ -18,19 +20,19 @@ public class Main {
         System.out.println("No of Records?");
         n=sc.nextInt ();
         Admin admin = new Admin(n);
-        String filename="C:\\Users\\Lenovo\\IdeaProjects\\Alumni_mycode\\src\\Book1.csv";
+        String filename="C:\\Users\\Lenovo\\IdeaProjects\\Alumni_mycode\\src\\Book1.csv";       //Change path to wherever Book1.csv is located
         File file=new File(filename);
                 try {
                         Scanner inputStream = new Scanner(file);
                         while(inputStream.hasNext()) {
                                 String data=inputStream.next();
                                 String[] values =data.split(",");
-                               if(values[5].equals("1"))
+                               if(values[5].equals("1"))        // Value 1 is for Students
                                  {
                                         admin.createRecord_Student(values[0],values[1],(values[6]));
 
                                 }
-                                else if(values[5].equals("0"))
+                                else if(values[5].equals("0"))          // Value 2 is for Alumni
                                 {
                                         admin.createRecord_Alumni(values[0],values[1],(values[6]), (values[2]),values[3],values[4]);
                                 }
@@ -38,7 +40,6 @@ public class Main {
                         }
                         inputStream.close();
                 } catch (FileNotFoundException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                 }
 
@@ -49,13 +50,13 @@ public class Main {
                 Adm = false;
 
                 System.out.println("Welcome To The Alumni Management System");
-                System.out.println("Hi are you a user or a Admin");
+                System.out.println("Hi are you a user or an Admin?");
                 String s = sc.next();
                 if (s.equalsIgnoreCase("user")) {
                         System.out.println("1. Student login  2.Alumni login");
                         int c = sc.nextInt();
                         if (c == 1) {
-                                System.out.println("Hi Welcome TO the Student Login");
+                                System.out.println("Hi Welcome To the Student Login");
                                 System.out.println("Please enter your username and password and unique id");
                                 String pass[] = new String[3];
                                 pass[0] = sc.next();
@@ -67,7 +68,7 @@ public class Main {
                                                 String data = inputStream.next();
                                                 //System.out.println(data);
                                                 String[] values = data.split(",");
-                                                if (values[5].equals("1")) {
+                                                if (values[5].equals("1")) {    //If Student
                                                         if (values[0].equals(pass[0]) && values[1].equals(pass[1])) {
                                                                 student = true;
                                                                 System.out.println("You Have Successfully Logged In");
@@ -126,7 +127,7 @@ public class Main {
                                                 String data = inputStream.next();
                                                 //System.out.println(data);
                                                 String[] values = data.split(",");
-                                                if (values[5].equals("0")) {
+                                                if (values[5].equals("0")) {    //If Alumni
                                                         if (values[0].equals(pass[0]) && values[1].equals(pass[1])) {
                                                                 Alumni = true;
                                                                 System.out.println("You Have Successfully Logged In");
@@ -213,8 +214,8 @@ public class Main {
                                         String data = inputStream.next();
                                         //System.out.println(data);
                                         String[] values = data.split(",");
-                                        if (values[3].equalsIgnoreCase("admin")) {
-                                                System.out.println("Hi Welcome TO the Admin Login");
+                                        if (values[3].equalsIgnoreCase("admin")) {     //If admin 
+                                                System.out.println("Hi Welcome To the Admin Login");
                                                 System.out.println("Please enter your username and password");
                                                 String pass[] = new String[2];
                                                 pass[0] = sc.next();
